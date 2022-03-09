@@ -204,6 +204,15 @@ private fun mapInapplicableCandidateError(
                     rootCause.isMismatchDueToNullability
                 )
             }
+            is MultipleContextReceiversApplicableForExtensionReceivers ->
+                FirErrors.AMBIGUOUS_CALL_WITH_IMPLICIT_CONTEXT_RECEIVER.createOn(qualifiedAccessSource ?: source)
+            is NoApplicableValueForContextReceiver ->
+                FirErrors.NO_CONTEXT_RECEIVER.createOn(qualifiedAccessSource ?: source, rootCause.expectedContextReceiverType)
+            is AmbiguousValuesForContextReceiverParameter ->
+                FirErrors.MULTIPLE_ARGUMENTS_APPLICABLE_FOR_CONTEXT_RECEIVER.createOn(
+                    qualifiedAccessSource ?: source,
+                    rootCause.expectedContextReceiverType
+                )
             is NullForNotNullType -> FirErrors.NULL_FOR_NONNULL_TYPE.createOn(
                 rootCause.argument.source ?: source
             )

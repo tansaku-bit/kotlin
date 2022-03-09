@@ -81,9 +81,9 @@ val FirTypeRef.isMarkedNullable: Boolean?
 
 val FirFunctionTypeRef.parametersCount: Int
     get() = if (receiverTypeRef != null)
-        valueParameters.size + 1
+        valueParameters.size + contextReceiverTypeRefs.size + 1
     else
-        valueParameters.size
+        valueParameters.size + contextReceiverTypeRefs.size
 
 val EXTENSION_FUNCTION_ANNOTATION = ClassId.fromString("kotlin/ExtensionFunctionType")
 
@@ -115,7 +115,10 @@ fun ConeClassLikeType.toConstKind(): ConstantValueKind<*>? = when (lookupTag.cla
 }
 
 fun List<FirAnnotation>.computeTypeAttributes(session: FirSession, predefined: List<ConeAttribute<*>> = emptyList()): ConeAttributes {
-    if (this.isEmpty()) return ConeAttributes.Empty
+    if (this.isEmpty()) {
+        if (predefined.isEmpty()) return ConeAttributes.Empty
+        return ConeAttributes.create(predefined)
+    }
     val attributes = mutableListOf<ConeAttribute<*>>()
     attributes += predefined
     val customAnnotations = mutableListOf<FirAnnotation>()
