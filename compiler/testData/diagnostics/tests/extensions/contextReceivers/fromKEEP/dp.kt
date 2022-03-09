@@ -1,3 +1,4 @@
+// FIR_IDENTICAL
 // !LANGUAGE: +ContextReceivers
 
 class View
@@ -18,5 +19,5 @@ fun Int.g(v: View) {
 }
 
 fun h() {
-    123.<!NO_CONTEXT_RECEIVER!>dp<!>
+    <!NO_CONTEXT_RECEIVER!>123.dp<!>
 }

@@ -5,7 +5,7 @@ class A {
 }
 
 context(A) class B {
-    val prop = <!UNRESOLVED_REFERENCE!>x<!> + this<!UNRESOLVED_LABEL!>@A<!>.x
+    val prop = x + this@A.x
 
-    fun f() = <!UNRESOLVED_REFERENCE!>x<!> + this<!UNRESOLVED_LABEL!>@A<!>.x
+    fun f() = x + this@A.x
 }
