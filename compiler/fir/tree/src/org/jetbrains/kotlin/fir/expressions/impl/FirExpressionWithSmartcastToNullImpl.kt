@@ -97,4 +97,11 @@ class FirExpressionWithSmartcastToNullImpl(
     @FirImplementationDetail
     override fun replaceSource(newSource: KtSourceElement?) {
     }
+
+    override val contextReceiverArguments: List<FirExpression>
+        get() = TODO("Not yet implemented")
+
+    override fun replaceContextReceiverArguments(newContextReceiverArguments: List<FirExpression>) {
+        TODO("Not yet implemented")
+    }
 }
