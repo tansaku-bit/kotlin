@@ -29,7 +29,7 @@ open class KotlinNativeFatFramework @Inject constructor(artifactName: String) : 
 
     private val kind = NativeOutputKind.FRAMEWORK
 
-    override fun getName(): String = lowerCamelCaseName(artifactName, "FatFramework")
+    override fun getTaskName(): String = lowerCamelCaseName("assemble", artifactName, "FatFramework")
 
     override fun validate(project: Project): Boolean {
         val logger = project.logger

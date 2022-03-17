@@ -25,7 +25,7 @@ open class KotlinNativeLibrary @Inject constructor(artifactName: String) : Kotli
     private val kind: NativeOutputKind
         get() = if (isStatic) NativeOutputKind.STATIC else NativeOutputKind.DYNAMIC
 
-    override fun getName(): String = lowerCamelCaseName(artifactName, kind.taskNameClassifier, "Library", target.presetName)
+    override fun getTaskName(): String = lowerCamelCaseName("assemble", artifactName, kind.taskNameClassifier, "Library", target.presetName)
 
     override fun validate(project: Project): Boolean {
         val logger = project.logger

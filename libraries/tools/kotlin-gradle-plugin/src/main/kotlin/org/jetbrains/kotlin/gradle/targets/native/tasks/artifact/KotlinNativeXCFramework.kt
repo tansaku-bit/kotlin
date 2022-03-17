@@ -29,7 +29,7 @@ open class KotlinNativeXCFramework @Inject constructor(artifactName: String) : K
 
     private val kind = NativeOutputKind.FRAMEWORK
 
-    override fun getName(): String = lowerCamelCaseName(artifactName, "XCFramework")
+    override fun getTaskName(): String = lowerCamelCaseName("assemble", artifactName, "XCFramework")
 
     override fun validate(project: Project): Boolean {
         val logger = project.logger

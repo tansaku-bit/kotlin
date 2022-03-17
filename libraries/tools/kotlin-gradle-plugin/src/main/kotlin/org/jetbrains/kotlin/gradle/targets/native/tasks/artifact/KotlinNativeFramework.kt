@@ -28,7 +28,7 @@ open class KotlinNativeFramework @Inject constructor(artifactName: String) : Kot
 
     private val kind = NativeOutputKind.FRAMEWORK
 
-    override fun getName(): String = lowerCamelCaseName(artifactName, kind.taskNameClassifier, target.presetName)
+    override fun getTaskName(): String = lowerCamelCaseName("assemble", artifactName, kind.taskNameClassifier, target.presetName)
 
     override fun validate(project: Project): Boolean {
         val logger = project.logger

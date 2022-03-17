@@ -6,7 +6,6 @@
 package org.jetbrains.kotlin.gradle.targets.native.tasks.artifact
 
 import org.gradle.api.Action
-import org.gradle.api.Named
 import org.gradle.api.Project
 import org.gradle.api.attributes.Usage
 import org.jetbrains.kotlin.gradle.dsl.KotlinCommonToolOptions
@@ -18,7 +17,7 @@ import org.jetbrains.kotlin.gradle.utils.lowerCamelCaseName
 import org.jetbrains.kotlin.konan.target.KonanTarget
 import org.jetbrains.kotlin.konan.target.presetName
 
-abstract class KotlinArtifact(val artifactName: String) : Named {
+abstract class KotlinArtifact(val artifactName: String) {
     internal val modules = mutableSetOf<Any>()
     fun setModules(vararg project: Any) {
         modules.clear()
@@ -29,8 +28,7 @@ abstract class KotlinArtifact(val artifactName: String) : Named {
         modules.add(project)
     }
 
-    fun getTaskName(): String = lowerCamelCaseName("assemble", name)
-
+    internal abstract fun getTaskName(): String
     internal abstract fun validate(project: Project): Boolean
     internal abstract fun registerAssembleTask(project: Project)
 }

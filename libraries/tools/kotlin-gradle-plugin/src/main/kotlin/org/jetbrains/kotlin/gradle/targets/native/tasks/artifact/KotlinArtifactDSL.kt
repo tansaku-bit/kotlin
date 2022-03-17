@@ -6,7 +6,9 @@
 package org.jetbrains.kotlin.gradle.targets.native.tasks.artifact
 
 import org.gradle.api.Action
+import org.gradle.api.Named
 import org.gradle.api.Project
+import org.gradle.api.plugins.ExtensionAware
 import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
 import org.jetbrains.kotlin.konan.target.KonanTarget
 import javax.inject.Inject
@@ -69,12 +71,16 @@ abstract class NativeArtifacts @Inject constructor(private val project: Project)
 
     private inline fun <reified T : KotlinArtifact> addKotlinArtifact(name: String, configure: Action<T>) {
         val artifact = project.objects.newInstance(T::class.java, name)
+
+        //we should add artifact to collection BEFORE configuration
+        //because other plugins can add extensions for artifacts which will be used in configuration block
+        project.kotlinArtifactsExtension.artifacts.add(NamedKotlinArtifact(artifact))
+
         artifact.addModule(project)
         configure.execute(artifact)
         if (artifact.validate(project)) {
             artifact.registerAssembleTask(project)
         }
-        project.kotlinArtifactsExtension.artifacts.add(artifact)
     }
 }
 
@@ -87,8 +93,12 @@ internal fun Project.registerKotlinArtifactsExtension() {
 internal val Project.kotlinArtifactsExtension: KotlinArtifactsExtension
     get() = extensions.getByName(KOTLIN_ARTIFACTS_EXTENSION_NAME) as KotlinArtifactsExtension
 
+class NamedKotlinArtifact(val artifact: KotlinArtifact) : Named {
+    override fun getName() = "KotlinArtifact::" + hashCode()
+}
+
 abstract class KotlinArtifactsExtension @Inject constructor(project: Project) {
-    val artifacts = project.container(KotlinArtifact::class.java)
+    val artifacts = project.container(NamedKotlinArtifact::class.java)
 
     val DEBUG = NativeBuildType.DEBUG
     val RELEASE = NativeBuildType.RELEASE
