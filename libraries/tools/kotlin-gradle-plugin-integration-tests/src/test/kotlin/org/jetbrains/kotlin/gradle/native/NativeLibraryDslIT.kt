@@ -7,14 +7,12 @@ package org.jetbrains.kotlin.gradle.native
 
 import org.jetbrains.kotlin.gradle.BaseGradleIT
 import org.jetbrains.kotlin.gradle.GradleVersionRequired
-import org.jetbrains.kotlin.gradle.KOTLIN_VERSION
 import org.jetbrains.kotlin.gradle.native.GeneralNativeIT.Companion.withNativeCommandLineArguments
 import org.jetbrains.kotlin.gradle.transformProjectWithPluginsDsl
 import org.jetbrains.kotlin.konan.target.HostManager
 import org.junit.Assume
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
-import java.io.File
 import kotlin.test.Test
 
 class NativeLibraryDslIT : BaseGradleIT() {
@@ -130,59 +128,6 @@ class NativeLibraryDslIT : BaseGradleIT() {
                     ":shared:assembleSharedDebugXCFramework"
                 )
                 assertFileExists("/shared/build/out/xcframework/release/shared.xcframework")
-            }
-        }
-    }
-
-    @Test
-    fun `check error when there aren't targets and artifacts`() {
-        with(transformProjectWithPluginsDsl("new-kn-library-dsl")) {
-            val artDir = projectDir.resolve("art")
-            artDir.mkdirs()
-            val artBuildFile = File(artDir, "build.gradle.kts")
-            artBuildFile.createNewFile()
-            artBuildFile.writeText("""
-                plugins {
-                    kotlin("multiplatform")
-                }
-            """.trimIndent())
-            gradleSettingsScript().appendText("\ninclude(\":art\")")
-
-            build(":art:tasks") {
-                assertFailed()
-                assertContains("Please initialize at least one Kotlin target or artifact in 'art (:art)'.")
-            }
-        }
-    }
-
-    @Test
-    fun `configuration is success when there aren't targets but are artifacts`() {
-        with(transformProjectWithPluginsDsl("new-kn-library-dsl")) {
-            val artDir = projectDir.resolve("art")
-            artDir.mkdirs()
-            val artBuildFile = File(artDir, "build.gradle.kts")
-            artBuildFile.createNewFile()
-            artBuildFile.writeText("""
-                plugins {
-                    kotlin("multiplatform")
-                }
-                
-                kotlinArtifacts {
-                    Native.XCFramework("Foo") {
-                        targets(iosX64, iosArm64, iosSimulatorArm64)
-                        setModules(
-                            project(":shared"),
-                            project(":lib")
-                        )
-                   }
-                }
-            """.trimIndent())
-
-            gradleSettingsScript().appendText("\ninclude(\":art\")")
-
-            build(":art:tasks") {
-                assertSuccessful()
-                assertTasksRegistered(":art:assembleFooXCFramework")
             }
         }
     }

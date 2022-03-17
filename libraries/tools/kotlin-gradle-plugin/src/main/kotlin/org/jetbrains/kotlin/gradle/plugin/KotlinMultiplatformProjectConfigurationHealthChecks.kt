@@ -6,7 +6,8 @@
 package org.jetbrains.kotlin.gradle.plugin
 
 import org.gradle.api.Project
-import org.jetbrains.kotlin.gradle.dsl.multiplatformExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import org.jetbrains.kotlin.gradle.dsl.multiplatformExtensionOrNull
 import org.jetbrains.kotlin.gradle.plugin.PropertiesProvider.Companion.kotlinPropertiesProvider
 import org.jetbrains.kotlin.gradle.plugin.PropertiesProvider.PropertyNames.KOTLIN_MPP_ENABLE_CINTEROP_COMMONIZATION
@@ -16,24 +17,21 @@ import org.jetbrains.kotlin.gradle.targets.android.findAndroidTarget
 import org.jetbrains.kotlin.gradle.targets.native.internal.CInteropCommonizerDependent
 import org.jetbrains.kotlin.gradle.targets.native.internal.from
 import org.jetbrains.kotlin.gradle.targets.native.internal.isAllowCommonizer
-import org.jetbrains.kotlin.gradle.targets.native.tasks.artifact.kotlinArtifactsExtension
 import org.jetbrains.kotlin.gradle.utils.androidPluginIds
 import org.jetbrains.kotlin.gradle.utils.runProjectConfigurationHealthCheck
 
 private class KotlinMultiplatformProjectConfigurationException(message: String) : Exception(message)
 
 internal fun Project.runMissingKotlinTargetsProjectConfigurationHealthCheck() = project.runProjectConfigurationHealthCheck {
-    val isNoTargetsInitialized = project.multiplatformExtension
+    val isNoTargetsInitialized = (project.kotlinExtension as KotlinMultiplatformExtension)
         .targets
         .none { it !is KotlinMetadataTarget }
 
-    val isNoArtifactsRegistered = project.kotlinArtifactsExtension.artifacts.isEmpty()
-
-    if (isNoTargetsInitialized && isNoArtifactsRegistered) {
+    if (isNoTargetsInitialized) {
         throw KotlinMultiplatformProjectConfigurationException(
             """
-                Please initialize at least one Kotlin target or artifact in '${project.name} (${project.path})'.
-                Read more https://kotlinlang.org/docs/multiplatform-set-up-targets.html
+                Please initialize at least one Kotlin target in '${project.name} (${project.path})'.
+                Read more https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-targets
                 """.trimIndent()
         )
     }
