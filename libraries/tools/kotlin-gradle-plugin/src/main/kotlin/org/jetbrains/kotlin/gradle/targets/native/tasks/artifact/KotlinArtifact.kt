@@ -17,7 +17,10 @@ import org.jetbrains.kotlin.gradle.utils.lowerCamelCaseName
 import org.jetbrains.kotlin.konan.target.KonanTarget
 import org.jetbrains.kotlin.konan.target.presetName
 
-abstract class KotlinArtifact(val artifactName: String) {
+abstract class KotlinArtifact(
+    val project: Project,
+    val artifactName: String
+) {
     internal val modules = mutableSetOf<Any>()
     fun setModules(vararg project: Any) {
         modules.clear()
@@ -29,11 +32,11 @@ abstract class KotlinArtifact(val artifactName: String) {
     }
 
     internal abstract fun getTaskName(): String
-    internal abstract fun validate(project: Project): Boolean
-    internal abstract fun registerAssembleTask(project: Project)
+    internal abstract fun validate(): Boolean
+    internal abstract fun registerAssembleTask()
 }
 
-abstract class KotlinNativeArtifact(artifactName: String) : KotlinArtifact(artifactName) {
+abstract class KotlinNativeArtifact(project: Project, artifactName: String) : KotlinArtifact(project, artifactName) {
     var modes: Set<NativeBuildType> = NativeBuildType.DEFAULT_BUILD_TYPES
     fun modes(vararg modes: NativeBuildType) {
         this.modes = modes.toSet()
@@ -52,7 +55,7 @@ abstract class KotlinNativeArtifact(artifactName: String) : KotlinArtifact(artif
         binaryOptions[name] = value
     }
 
-    override fun validate(project: Project): Boolean {
+    override fun validate(): Boolean {
         val logger = project.logger
         if (modules.isEmpty()) {
             logger.error("Native artifact '$artifactName' wasn't configured because it requires at least one module for linking")
@@ -67,7 +70,7 @@ abstract class KotlinNativeArtifact(artifactName: String) : KotlinArtifact(artif
         return true
     }
 
-    fun Project.registerLibsDependencies(target: KonanTarget, artifactName: String, deps: Set<Any>): String {
+    protected fun Project.registerLibsDependencies(target: KonanTarget, artifactName: String, deps: Set<Any>): String {
         val librariesConfigurationName = lowerCamelCaseName(target.presetName, artifactName, "linkLibrary")
         configurations.maybeCreate(librariesConfigurationName).apply {
             isVisible = false
@@ -82,7 +85,7 @@ abstract class KotlinNativeArtifact(artifactName: String) : KotlinArtifact(artif
         return librariesConfigurationName
     }
 
-    fun Project.registerExportDependencies(target: KonanTarget, artifactName: String, deps: Set<Any>): String {
+    protected fun Project.registerExportDependencies(target: KonanTarget, artifactName: String, deps: Set<Any>): String {
         val exportConfigurationName = lowerCamelCaseName(target.presetName, artifactName, "linkExport")
         configurations.maybeCreate(exportConfigurationName).apply {
             isVisible = false

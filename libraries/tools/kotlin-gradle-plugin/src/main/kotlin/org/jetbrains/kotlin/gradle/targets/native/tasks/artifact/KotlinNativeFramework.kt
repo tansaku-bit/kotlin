@@ -22,7 +22,7 @@ import org.jetbrains.kotlin.konan.target.presetName
 import org.jetbrains.kotlin.konan.util.visibleName
 import javax.inject.Inject
 
-open class KotlinNativeFramework @Inject constructor(artifactName: String) : KotlinNativeArtifact(artifactName) {
+open class KotlinNativeFramework @Inject constructor(project: Project, artifactName: String) : KotlinNativeArtifact(project, artifactName) {
     lateinit var target: KonanTarget
     var embedBitcode: BitcodeEmbeddingMode? = null
 
@@ -30,9 +30,9 @@ open class KotlinNativeFramework @Inject constructor(artifactName: String) : Kot
 
     override fun getTaskName(): String = lowerCamelCaseName("assemble", artifactName, kind.taskNameClassifier, target.presetName)
 
-    override fun validate(project: Project): Boolean {
+    override fun validate(): Boolean {
         val logger = project.logger
-        if (!super.validate(project)) return false
+        if (!super.validate()) return false
         if (!this::target.isInitialized) {
             logger.error("Native artifact '$artifactName' wasn't configured because it requires target")
             return false
@@ -45,7 +45,7 @@ open class KotlinNativeFramework @Inject constructor(artifactName: String) : Kot
         return true
     }
 
-    override fun registerAssembleTask(project: Project) {
+    override fun registerAssembleTask() {
         val resultTask = project.registerTask<Task>(getTaskName()) { task ->
             task.group = BasePlugin.BUILD_GROUP
             task.description = "Assemble ${kind.description} '$artifactName' for ${target.visibleName}."

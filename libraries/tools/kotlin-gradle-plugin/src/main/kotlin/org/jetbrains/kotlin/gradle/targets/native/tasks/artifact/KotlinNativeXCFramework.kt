@@ -19,7 +19,7 @@ import org.jetbrains.kotlin.gradle.utils.lowerCamelCaseName
 import org.jetbrains.kotlin.konan.target.KonanTarget
 import javax.inject.Inject
 
-open class KotlinNativeXCFramework @Inject constructor(artifactName: String) : KotlinNativeArtifact(artifactName) {
+open class KotlinNativeXCFramework @Inject constructor(project: Project, artifactName: String) : KotlinNativeArtifact(project, artifactName) {
     var targets: Set<KonanTarget> = emptySet()
     fun targets(vararg targets: KonanTarget) {
         this.targets = targets.toSet()
@@ -31,9 +31,9 @@ open class KotlinNativeXCFramework @Inject constructor(artifactName: String) : K
 
     override fun getTaskName(): String = lowerCamelCaseName("assemble", artifactName, "XCFramework")
 
-    override fun validate(project: Project): Boolean {
+    override fun validate(): Boolean {
         val logger = project.logger
-        if (!super.validate(project)) return false
+        if (!super.validate()) return false
         if (targets.isEmpty()) {
             logger.error("Native artifact '$artifactName' wasn't configured because it requires at least one target")
             return false
@@ -46,7 +46,7 @@ open class KotlinNativeXCFramework @Inject constructor(artifactName: String) : K
         return true
     }
 
-    override fun registerAssembleTask(project: Project) {
+    override fun registerAssembleTask() {
         val parentTask = project.registerTask<Task>(getTaskName()) {
             it.group = "build"
             it.description = "Assemble all types of registered '$artifactName' XCFramework"
