@@ -18,10 +18,12 @@ class WasmCompiledModuleFragment(val irBuiltIns: IrBuiltIns) {
     val functions =
         ReferencableAndDefinable<IrFunctionSymbol, WasmFunction>()
     val globals =
-        ReferencableAndDefinable<IrFieldSymbol, WasmGlobal>()
+        ReferencableAndDefinable<IrSymbol, WasmGlobal>()
     val functionTypes =
         ReferencableAndDefinable<IrFunctionSymbol, WasmFunctionType>()
     val gcTypes =
+        ReferencableAndDefinable<IrClassSymbol, WasmTypeDeclaration>()
+    val vTableGcTypes =
         ReferencableAndDefinable<IrClassSymbol, WasmTypeDeclaration>()
     val classIds =
         ReferencableElements<IrClassSymbol, Int>()
@@ -121,6 +123,7 @@ class WasmCompiledModuleFragment(val irBuiltIns: IrBuiltIns) {
         bind(globals.unbound, globals.defined)
 
         bind(gcTypes.unbound, gcTypes.defined)
+        bind(vTableGcTypes.unbound, vTableGcTypes.defined)
 
         // Associate function types to a single canonical function type
         val canonicalFunctionTypes =
@@ -298,11 +301,12 @@ class WasmCompiledModuleFragment(val irBuiltIns: IrBuiltIns) {
             }
         }
 
+        val sortedVTableGcTypes = vTableGcTypes.elements.sortedBy(::wasmTypeDeclarationOrderKey)
         val sortedGcTypes = gcTypes.elements.sortedBy(::wasmTypeDeclarationOrderKey)
 
         val module = WasmModule(
             functionTypes = canonicalFunctionTypes.values.toList() + tagFuncType + masterInitFunctionType,
-            gcTypes = sortedGcTypes,
+            gcTypes = sortedVTableGcTypes + sortedGcTypes,
             gcTypesInRecursiveGroup = true,
             importsInOrder = importedFunctions,
             importedFunctions = importedFunctions,

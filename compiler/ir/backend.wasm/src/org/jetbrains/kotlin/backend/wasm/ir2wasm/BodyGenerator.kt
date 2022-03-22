@@ -25,10 +25,7 @@ import org.jetbrains.kotlin.ir.declarations.*
 import org.jetbrains.kotlin.ir.expressions.*
 import org.jetbrains.kotlin.ir.symbols.IrClassSymbol
 import org.jetbrains.kotlin.ir.types.*
-import org.jetbrains.kotlin.ir.util.defaultType
-import org.jetbrains.kotlin.ir.util.getInlineClassBackingField
-import org.jetbrains.kotlin.ir.util.isInterface
-import org.jetbrains.kotlin.ir.util.parentAsClass
+import org.jetbrains.kotlin.ir.util.*
 import org.jetbrains.kotlin.ir.visitors.IrElementVisitorVoid
 import org.jetbrains.kotlin.ir.visitors.acceptVoid
 import org.jetbrains.kotlin.wasm.ir.*
@@ -207,6 +204,8 @@ class BodyGenerator(val context: WasmFunctionCodegenContext) : IrElementVisitorV
             return
         }
 
+        body.buildGetGlobal(context.referenceGlobal(klass.symbol)) //VTable load
+
         val wasmClassId = context.referenceClassId(klass.symbol)
 
         val irFields: List<IrField> = klass.allFields(backendContext.irBuiltIns)
@@ -218,7 +217,6 @@ class BodyGenerator(val context: WasmFunctionCodegenContext) : IrElementVisitorV
                 generateDefaultInitializerForType(context.transformType(field.type), body)
         }
 
-        generateClassRTT(klass.symbol)
         body.buildStructNew(wasmGcType)
         generateCall(expression)
     }
@@ -245,10 +243,10 @@ class BodyGenerator(val context: WasmFunctionCodegenContext) : IrElementVisitorV
             val structTypeName = context.referenceGcType(klass.symbol)
             val klassId = context.referenceClassId(klass.symbol)
 
+            body.buildGetGlobal(context.referenceGlobal(klass.symbol)) //VTable load
             body.buildConstI32Symbol(klassId)
             body.buildConstI32(0) // Any::_hashCode
             generateExpression(call.getValueArgument(0)!!)
-            generateClassRTT(klass.symbol)
             body.buildStructNew(structTypeName)
             return
         }
@@ -287,12 +285,24 @@ class BodyGenerator(val context: WasmFunctionCodegenContext) : IrElementVisitorV
                 val vfSlot = classMetadata.virtualMethods.indexOfFirst { it.function == function }
                 // Dispatch receiver should be simple and without side effects at this point
                 // TODO: Verify
-                generateExpression(call.dispatchReceiver!!)
-                body.buildConstI32(vfSlot)
-                body.buildCall(context.referenceFunction(wasmSymbols.getVirtualMethodId))
-                body.buildCallIndirect(
-                    symbol = context.referenceFunctionType(function.symbol)
-                )
+                val receiver = call.dispatchReceiver!!
+                generateExpression(receiver)
+
+                val receiverClass = receiver.type.getRuntimeClass
+                if (receiverClass == null || !receiverClass.isSubclassOf(klass)) {
+                    generateTypeRTT(klass.symbol.defaultType)
+                    body.buildRefCast()
+                }
+
+                body.buildStructGet(context.referenceGcType(klass.symbol), WasmSymbol(0))
+                body.buildStructGet(context.referenceVTableGcType(klass.symbol), WasmSymbol(vfSlot))
+                body.buildInstr(WasmOp.CALL_REF)
+
+//                body.buildConstI32(vfSlot)
+//                body.buildCall(context.referenceFunction(wasmSymbols.getVirtualMethodId))
+//                body.buildCallIndirect(
+//                    symbol = context.referenceFunctionType(function.symbol)
+//                )
             } else {
                 generateExpression(call.dispatchReceiver!!)
                 body.buildConstI32Symbol(context.referenceInterfaceId(klass.symbol))
