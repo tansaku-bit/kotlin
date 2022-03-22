@@ -99,7 +99,21 @@ class ScriptGenerator(declarationGenerator: DeclarationGenerator) : DeclarationG
                 ).also { it.parent = irScript }
             }
 
-            irScript.earlierScriptsParameter = descriptor.earlierScriptsConstructorParameter?.let(::createValueParameter)
+            if (context.extensions.lowerScriptToClass) {
+                irScript.earlierScriptsParameter = descriptor.earlierScriptsConstructorParameter?.let(::createValueParameter)?.also {
+                    val irProperty =
+                        PropertyGenerator(declarationGenerator).generateSyntheticProperty(
+                            ktScript,
+                            descriptor.earlierScriptsProperty!!,
+                            it,
+                            generateSyntheticAccessors = true
+                        )
+                    irProperty.origin = IrDeclarationOrigin.SCRIPT_EARLIER_SCRIPTS
+                    irProperty.parent = irScript
+                    irScript.statements += irProperty
+                    irScript.earlierScriptsPropertySymbol = irProperty.symbol
+                }
+            }
 
             irScript.explicitCallParameters = descriptor.explicitConstructorParameters.map(::createValueParameter)
 
