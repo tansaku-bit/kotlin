@@ -165,10 +165,7 @@ abstract class AbstractConeCallConflictResolver(
             addIfNotNull(function.receiverTypeRef?.coneType)
             val typeForCallableReference = call.resultingTypeForCallableReference
             if (typeForCallableReference != null) {
-                val typeArguments = typeForCallableReference.typeArguments.let {
-                    if (function.receiverTypeRef != null) it.drop(1) else it.toList()
-                }
-                typeArguments
+                typeForCallableReference.typeArguments
                     .mapTo(this) {
                         (it as ConeKotlinType).removeTypeVariableTypes(inferenceComponents.session.typeContext)
                     }
