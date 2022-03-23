@@ -291,8 +291,6 @@ class DeclarationGenerator(val context: WasmModuleCodegenContext, private val al
     }
 
     private fun binaryDataStruct(classMetadata: ClassMetadata): ConstantDataStruct {
-        val invalidIndex = -1
-
         val fqnShouldBeEmitted = context.backendContext.configuration.languageVersionSettings.getFlag(allowFullyQualifiedNameInKClass)
         //TODO("FqName for inner classes could be invalid due to topping it out from outer class")
         val packageName = if (fqnShouldBeEmitted) classMetadata.klass.kotlinFqName.parentOrNull()?.asString() ?: "" else ""
@@ -312,22 +310,6 @@ class DeclarationGenerator(val context: WasmModuleCodegenContext, private val al
             ConstantDataIntField("SuperTypeId", context.referenceClassId(it.symbol))
         } ?: ConstantDataIntField("SuperTypeId", -1)
 
-        val vtableSizeField = ConstantDataIntField(
-            "V-table length",
-            classMetadata.virtualMethods.size
-        )
-
-        val vtableArray = ConstantDataIntArray(
-            "V-table",
-            classMetadata.virtualMethods.map {
-                if (it.function.modality == Modality.ABSTRACT) {
-                    WasmSymbol(invalidIndex)
-                } else {
-                    context.referenceVirtualFunctionId(it.function.symbol)
-                }
-            }
-        )
-
         val interfaceTablePtr = ConstantDataIntField(
             "interfaceTablePtr",
             context.referenceInterfaceTableAddress(classMetadata.klass.symbol)
@@ -339,12 +321,9 @@ class DeclarationGenerator(val context: WasmModuleCodegenContext, private val al
                 typeInfo,
                 superTypeId,
                 interfaceTablePtr,
-                vtableSizeField,
-                vtableArray,
             )
         )
     }
-
 
     private fun interfaceTable(classMetadata: ClassMetadata): ConstantDataStruct {
         val interfaces = classMetadata.interfaces

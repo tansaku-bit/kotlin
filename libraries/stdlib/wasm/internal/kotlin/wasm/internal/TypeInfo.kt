@@ -15,8 +15,6 @@ internal const val TYPE_INFO_TYPE_SIMPLE_NAME_LENGTH_OFFSET = TYPE_INFO_TYPE_PAC
 internal const val TYPE_INFO_TYPE_SIMPLE_NAME_PRT_OFFSET = TYPE_INFO_TYPE_SIMPLE_NAME_LENGTH_OFFSET + TYPE_INFO_ELEMENT_SIZE
 internal const val TYPE_INFO_SUPER_TYPE_OFFSET = TYPE_INFO_TYPE_SIMPLE_NAME_PRT_OFFSET + TYPE_INFO_ELEMENT_SIZE
 internal const val TYPE_INFO_ITABLE_PTR_OFFSET = TYPE_INFO_SUPER_TYPE_OFFSET + TYPE_INFO_ELEMENT_SIZE
-internal const val TYPE_INFO_VTABLE_LENGTH_OFFSET = TYPE_INFO_ITABLE_PTR_OFFSET + TYPE_INFO_ELEMENT_SIZE
-internal const val TYPE_INFO_VTABLE_OFFSET = TYPE_INFO_VTABLE_LENGTH_OFFSET + TYPE_INFO_ELEMENT_SIZE
 
 internal class TypeInfoData(val typeId: Int, val isInterface: Boolean, val packageName: String, val typeName: String)
 
@@ -33,23 +31,8 @@ internal fun getTypeInfoTypeDataByPtr(typeInfoPtr: Int): TypeInfoData {
 internal fun getSuperTypeId(typeInfoPtr: Int): Int =
     wasm_i32_load(typeInfoPtr + TYPE_INFO_SUPER_TYPE_OFFSET)
 
-internal fun getVtablePtr(obj: Any): Int =
-    obj.typeInfo + TYPE_INFO_VTABLE_OFFSET
-
-internal fun getVtableLength(obj: Any): Int =
-    wasm_i32_load(obj.typeInfo + TYPE_INFO_VTABLE_LENGTH_OFFSET)
-
 internal fun getItablePtr(obj: Any): Int =
     wasm_i32_load(obj.typeInfo + TYPE_INFO_ITABLE_PTR_OFFSET)
-
-internal fun getInterfaceListLength(itablePtr: Int): Int =
-    wasm_i32_load(itablePtr + TYPE_INFO_VTABLE_LENGTH_OFFSET)
-
-internal fun getVirtualMethodId(obj: Any, virtualFunctionSlot: Int): Int {
-    val vtablePtr = getVtablePtr(obj)
-    val methodIdPtr = vtablePtr + virtualFunctionSlot * TYPE_INFO_ELEMENT_SIZE
-    return wasm_i32_load(methodIdPtr)
-}
 
 // Returns -1 if obj does not implement interface
 internal fun getInterfaceImplId(obj: Any, interfaceId: Int): Int {
