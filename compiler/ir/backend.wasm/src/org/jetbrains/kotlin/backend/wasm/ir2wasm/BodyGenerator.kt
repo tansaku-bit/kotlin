@@ -297,6 +297,12 @@ class BodyGenerator(val context: WasmFunctionCodegenContext) : IrElementVisitorV
                 body.buildStructGet(context.referenceGcType(klass.symbol), WasmSymbol(0))
                 body.buildStructGet(context.referenceVTableGcType(klass.symbol), WasmSymbol(vfSlot))
                 body.buildInstr(WasmOp.CALL_REF)
+
+//                body.buildConstI32(vfSlot)
+//                body.buildCall(context.referenceFunction(wasmSymbols.getVirtualMethodId))
+//                body.buildCallIndirect(
+//                    symbol = context.referenceFunctionType(function.symbol)
+//                )
             } else {
                 generateExpression(call.dispatchReceiver!!)
                 body.buildConstI32Symbol(context.referenceInterfaceId(klass.symbol))

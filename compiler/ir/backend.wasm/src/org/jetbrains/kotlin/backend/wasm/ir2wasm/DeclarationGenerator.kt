@@ -261,7 +261,6 @@ class DeclarationGenerator(val context: WasmModuleCodegenContext, private val al
 
             // New type info model
             if (declaration.modality != Modality.ABSTRACT) {
-                context.generateInterfaceTable(symbol, interfaceTable(metadata))
                 for (i in metadata.interfaces) {
                     val interfaceImplementation = InterfaceImplementation(i.symbol, declaration.symbol)
                     // TODO: Cache it
@@ -310,18 +309,14 @@ class DeclarationGenerator(val context: WasmModuleCodegenContext, private val al
             ConstantDataIntField("SuperTypeId", context.referenceClassId(it.symbol))
         } ?: ConstantDataIntField("SuperTypeId", -1)
 
-        val interfaceTablePtr = ConstantDataIntField(
-            "interfaceTablePtr",
-            context.referenceInterfaceTableAddress(classMetadata.klass.symbol)
-        )
+        val typeInfoContent = mutableListOf(typeInfo, superTypeId)
+        if (classMetadata.klass.modality != Modality.ABSTRACT) {
+            typeInfoContent.add(interfaceTable(classMetadata))
+        }
 
         return ConstantDataStruct(
             "Class TypeInfo: ${classMetadata.klass.fqNameWhenAvailable} ",
-            listOf(
-                typeInfo,
-                superTypeId,
-                interfaceTablePtr,
-            )
+            typeInfoContent
         )
     }
 

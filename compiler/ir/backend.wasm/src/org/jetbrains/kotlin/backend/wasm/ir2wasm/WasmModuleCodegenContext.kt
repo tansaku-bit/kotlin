@@ -28,7 +28,6 @@ interface WasmModuleCodegenContext : WasmBaseCodegenContext {
     fun registerClass(irClass: IrClassSymbol)
 
     fun generateTypeInfo(irClass: IrClassSymbol, typeInfo: ConstantDataElement)
-    fun generateInterfaceTable(irClass: IrClassSymbol, table: ConstantDataElement)
 
     fun registerInterfaceImplementationMethod(
         interfaceImplementation: InterfaceImplementation,
@@ -36,5 +35,4 @@ interface WasmModuleCodegenContext : WasmBaseCodegenContext {
     )
 
     fun referenceInterfaceImplementationId(interfaceImplementation: InterfaceImplementation): WasmSymbol<Int>
-    fun referenceInterfaceTableAddress(irClass: IrClassSymbol): WasmSymbol<Int>
 }

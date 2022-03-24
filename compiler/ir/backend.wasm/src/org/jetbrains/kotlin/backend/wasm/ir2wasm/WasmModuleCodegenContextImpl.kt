@@ -67,10 +67,6 @@ class WasmModuleCodegenContextImpl(
         wasmFragment.typeInfo.define(irClass, typeInfo)
     }
 
-    override fun generateInterfaceTable(irClass: IrClassSymbol, table: ConstantDataElement) {
-        wasmFragment.definedClassITableData.define(irClass, table)
-    }
-
     override fun registerInitFunction(wasmFunction: WasmFunction, priority: String) {
         wasmFragment.initFunctions += WasmCompiledModuleFragment.FunWithPriority(wasmFunction, priority)
     }
@@ -167,12 +163,6 @@ class WasmModuleCodegenContextImpl(
 
     override fun referenceClassId(irClass: IrClassSymbol): WasmSymbol<Int> =
         wasmFragment.classIds.reference(irClass)
-
-    override fun referenceInterfaceTableAddress(irClass: IrClassSymbol): WasmSymbol<Int> {
-        if (irClass.owner.modality == Modality.ABSTRACT) return WasmSymbol(-1)
-        return wasmFragment.referencedClassITableAddresses.reference(irClass)
-    }
-
 
     override fun referenceInterfaceId(irInterface: IrClassSymbol): WasmSymbol<Int> {
         return wasmFragment.interfaceId.reference(irInterface)

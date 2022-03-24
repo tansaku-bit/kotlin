@@ -57,10 +57,6 @@ class WasmCompiledModuleFragment(val irBuiltIns: IrBuiltIns) {
     val interfaceMethodTables =
         ReferencableAndDefinable<IrFunctionSymbol, WasmTable>()
 
-    // Defined class interface tables
-    val definedClassITableData =
-        ReferencableAndDefinable<IrClassSymbol, ConstantDataElement>()
-
     // Address of class interface table in linear memory
     val referencedClassITableAddresses =
         ReferencableElements<IrClassSymbol, Int>()
@@ -143,13 +139,6 @@ class WasmCompiledModuleFragment(val irBuiltIns: IrBuiltIns) {
             currentDataSectionAddress += typeInfoElement.sizeInBytes
         }
 
-        val interfaceTableAddresses = mutableMapOf<IrClassSymbol, Int>()
-        for (typeInfoElement in definedClassITableData.elements) {
-            val ir = definedClassITableData.wasmToIr.getValue(typeInfoElement)
-            interfaceTableAddresses[ir] = currentDataSectionAddress
-            currentDataSectionAddress += typeInfoElement.sizeInBytes
-        }
-
         val stringDataSectionStart = currentDataSectionAddress
         val stringDataSectionBytes = mutableListOf<Byte>()
         val stringAddrs = mutableMapOf<String, Int>()
@@ -167,7 +156,6 @@ class WasmCompiledModuleFragment(val irBuiltIns: IrBuiltIns) {
         currentDataSectionAddress += scratchMemSizeInBytes
 
         bind(classIds.unbound, klassIds)
-        bind(referencedClassITableAddresses.unbound, interfaceTableAddresses)
         bind(stringLiteralId.unbound, stringAddrs)
         bindIndices(virtualFunctionId.unbound, virtualFunctions)
         bindIndices(signatureId.unbound, signatures.toList())
@@ -185,7 +173,6 @@ class WasmCompiledModuleFragment(val irBuiltIns: IrBuiltIns) {
         bind(interfaceMethodTables.unbound, interfaceMethodTables.defined)
 
         val data = typeInfo.buildData(address = { klassIds.getValue(it) }) +
-                definedClassITableData.buildData(address = { interfaceTableAddresses.getValue(it) }) +
                 WasmData(WasmDataMode.Active(0, stringDataSectionStart), stringDataSectionBytes.toByteArray())
 
         val logTypeInfo = false

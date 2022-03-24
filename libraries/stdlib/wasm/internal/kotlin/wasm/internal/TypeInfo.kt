@@ -14,7 +14,8 @@ internal const val TYPE_INFO_TYPE_PACKAGE_NAME_PRT_OFFSET = TYPE_INFO_TYPE_PACKA
 internal const val TYPE_INFO_TYPE_SIMPLE_NAME_LENGTH_OFFSET = TYPE_INFO_TYPE_PACKAGE_NAME_PRT_OFFSET + TYPE_INFO_ELEMENT_SIZE
 internal const val TYPE_INFO_TYPE_SIMPLE_NAME_PRT_OFFSET = TYPE_INFO_TYPE_SIMPLE_NAME_LENGTH_OFFSET + TYPE_INFO_ELEMENT_SIZE
 internal const val TYPE_INFO_SUPER_TYPE_OFFSET = TYPE_INFO_TYPE_SIMPLE_NAME_PRT_OFFSET + TYPE_INFO_ELEMENT_SIZE
-internal const val TYPE_INFO_ITABLE_PTR_OFFSET = TYPE_INFO_SUPER_TYPE_OFFSET + TYPE_INFO_ELEMENT_SIZE
+internal const val TYPE_INFO_ITABLE_SIZE_OFFSET = TYPE_INFO_SUPER_TYPE_OFFSET + TYPE_INFO_ELEMENT_SIZE
+internal const val TYPE_INFO_ITABLE_OFFSET = TYPE_INFO_ITABLE_SIZE_OFFSET + TYPE_INFO_ELEMENT_SIZE
 
 internal class TypeInfoData(val typeId: Int, val isInterface: Boolean, val packageName: String, val typeName: String)
 
@@ -31,14 +32,10 @@ internal fun getTypeInfoTypeDataByPtr(typeInfoPtr: Int): TypeInfoData {
 internal fun getSuperTypeId(typeInfoPtr: Int): Int =
     wasm_i32_load(typeInfoPtr + TYPE_INFO_SUPER_TYPE_OFFSET)
 
-internal fun getItablePtr(obj: Any): Int =
-    wasm_i32_load(obj.typeInfo + TYPE_INFO_ITABLE_PTR_OFFSET)
-
 // Returns -1 if obj does not implement interface
 internal fun getInterfaceImplId(obj: Any, interfaceId: Int): Int {
-    val interfaceListSizePtr = getItablePtr(obj)
-    val interfaceListPtr = interfaceListSizePtr + TYPE_INFO_ELEMENT_SIZE
-    val interfaceListSize = wasm_i32_load(interfaceListSizePtr)
+    val interfaceListSize = wasm_i32_load(obj.typeInfo + TYPE_INFO_ITABLE_SIZE_OFFSET)
+    val interfaceListPtr = obj.typeInfo + TYPE_INFO_ITABLE_OFFSET
 
     var interfaceSlot = 0
     while (interfaceSlot < interfaceListSize) {
