@@ -90,9 +90,10 @@ fun SessionHolder.collectTowerDataElementsForClass(owner: FirClass, defaultType:
     }
 
     val thisReceiver = ImplicitDispatchReceiverValue(owner.symbol, defaultType, session, scopeSession)
-    val contextReceivers = (owner as? FirRegularClass)?.contextReceivers?.map {
+    val contextReceivers = (owner as? FirRegularClass)?.contextReceivers?.mapIndexed { index, receiver ->
         ContextReceiverValueForClass(
-            owner.symbol, it.typeRef.coneType, it.labelName, session, scopeSession,
+            owner.symbol, receiver.typeRef.coneType, receiver.labelName, session, scopeSession,
+            contextReceiverNumber = index,
         )
     }.orEmpty()
 
@@ -168,11 +169,11 @@ class FirTowerDataContext private constructor(
         )
     }
 
-    fun addReceiver(name: Name?, implicitReceiverValue: ImplicitReceiverValue<*>): FirTowerDataContext {
+    fun addReceiver(name: Name?, implicitReceiverValue: ImplicitReceiverValue<*>, additionalLabName: Name? = null): FirTowerDataContext {
         val element = implicitReceiverValue.asTowerDataElement()
         return FirTowerDataContext(
             towerDataElements.add(element),
-            implicitReceiverStack.add(name, implicitReceiverValue),
+            implicitReceiverStack.add(name, implicitReceiverValue, additionalLabName),
             localScopes,
             nonLocalTowerDataElements.add(element)
         )
@@ -248,6 +249,9 @@ typealias FirLocalScopes = PersistentList<FirLocalScope>
 fun FirCallableDeclaration.createContextReceiverValues(
     sessionHolder: SessionHolder,
 ): List<ContextReceiverValueForCallable> =
-    contextReceivers.map {
-        ContextReceiverValueForCallable(symbol, it.typeRef.coneType, it.labelName, sessionHolder.session, sessionHolder.scopeSession)
+    contextReceivers.mapIndexed { index, receiver ->
+        ContextReceiverValueForCallable(
+            symbol, receiver.typeRef.coneType, receiver.labelName, sessionHolder.session, sessionHolder.scopeSession,
+            contextReceiverNumber = index,
+        )
     }
