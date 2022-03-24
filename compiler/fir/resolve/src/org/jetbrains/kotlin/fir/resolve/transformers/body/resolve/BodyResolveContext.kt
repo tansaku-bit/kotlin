@@ -38,6 +38,7 @@ import org.jetbrains.kotlin.fir.symbols.impl.FirClassLikeSymbol
 import org.jetbrains.kotlin.fir.symbols.impl.FirFunctionSymbol
 import org.jetbrains.kotlin.fir.types.ConeClassLikeType
 import org.jetbrains.kotlin.fir.types.ConeKotlinType
+import org.jetbrains.kotlin.fir.types.ConeLookupTagBasedType
 import org.jetbrains.kotlin.fir.types.FirImplicitTypeRef
 import org.jetbrains.kotlin.fir.types.coneType
 import org.jetbrains.kotlin.name.Name
@@ -204,8 +205,8 @@ class BodyResolveContext(
     }
 
     @PrivateForInline
-    fun addReceiver(name: Name?, implicitReceiverValue: ImplicitReceiverValue<*>) {
-        replaceTowerDataContext(towerDataContext.addReceiver(name, implicitReceiverValue))
+    fun addReceiver(name: Name?, implicitReceiverValue: ImplicitReceiverValue<*>, additionalLabelName: Name? = null) {
+        replaceTowerDataContext(towerDataContext.addReceiver(name, implicitReceiverValue, additionalLabelName))
     }
 
     @PrivateForInline
@@ -225,6 +226,7 @@ class BodyResolveContext(
         owner: FirCallableDeclaration,
         type: ConeKotlinType?,
         holder: SessionHolder,
+        additionalLabelName: Name? = null,
         f: () -> T
     ): T = withTowerDataCleanup {
         replaceTowerDataContext(towerDataContext.addContextReceiverGroup(owner.createContextReceiverValues(holder)))
@@ -236,7 +238,7 @@ class BodyResolveContext(
                 holder.session,
                 holder.scopeSession
             )
-            addReceiver(labelName, receiver)
+            addReceiver(labelName, receiver, additionalLabelName)
         }
 
         f()
@@ -575,11 +577,19 @@ class BodyResolveContext(
                     storeVariable(parameter, holder.session)
                 }
                 val receiverTypeRef = function.receiverTypeRef
-                withLabelAndReceiverType(function.name, function, receiverTypeRef?.coneType, holder, f)
+
+
+                val type = receiverTypeRef?.coneType
+                val additionalLabelName = type?.labelName()
+                withLabelAndReceiverType(function.name, function, type, holder, additionalLabelName, f)
             } else {
                 f()
             }
         }
+    }
+
+    private fun ConeKotlinType.labelName(): Name? {
+        return (this as ConeLookupTagBasedType?)?.lookupTag?.name
     }
 
     @OptIn(PrivateForInline::class)
@@ -714,7 +724,9 @@ class BodyResolveContext(
                 storeBackingField(property, holder.session)
             }
             withContainer(accessor) {
-                withLabelAndReceiverType(property.name, property, receiverTypeRef?.coneType, holder, f)
+                val type = receiverTypeRef?.coneType
+                val additionalLabelName = type?.labelName()
+                withLabelAndReceiverType(property.name, property, type, holder, additionalLabelName, f)
             }
         }
     }
