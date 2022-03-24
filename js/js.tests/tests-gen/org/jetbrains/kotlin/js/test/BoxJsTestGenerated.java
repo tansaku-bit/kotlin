@@ -6157,6 +6157,12 @@ public class BoxJsTestGenerated extends AbstractBoxJsTest {
         }
 
         @Test
+        @TestMetadata("importFunctionSyntax.kt")
+        public void testImportFunctionSyntax() throws Exception {
+            runTest("js/js.translator/testData/box/jsCode/importFunctionSyntax.kt");
+        }
+
+        @Test
         @TestMetadata("invocation.kt")
         public void testInvocation() throws Exception {
             runTest("js/js.translator/testData/box/jsCode/invocation.kt");

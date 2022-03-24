@@ -6535,6 +6535,12 @@ public class IrBoxJsTestGenerated extends AbstractIrBoxJsTest {
         }
 
         @Test
+        @TestMetadata("importFunctionSyntax.kt")
+        public void testImportFunctionSyntax() throws Exception {
+            runTest("js/js.translator/testData/box/jsCode/importFunctionSyntax.kt");
+        }
+
+        @Test
         @TestMetadata("init.kt")
         public void testInit() throws Exception {
             runTest("js/js.translator/testData/box/jsCode/init.kt");
