@@ -254,19 +254,19 @@ public inline fun <T, R : kotlin.Any, C : kotlin.collections.MutableCollection<i
 public inline fun <T, R, C : kotlin.collections.MutableCollection<in R>> kotlin.sequences.Sequence<T>.mapTo(destination: C, transform: (T) -> R): C
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxNotEmpty")
+@kotlin.jvm.JvmName(name = "maxOrThrow")
 public fun <T : kotlin.Comparable<T>> kotlin.sequences.Sequence<T>.max(): T
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxNotEmpty")
+@kotlin.jvm.JvmName(name = "maxOrThrow")
 public fun kotlin.sequences.Sequence<kotlin.Double>.max(): kotlin.Double
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxNotEmpty")
+@kotlin.jvm.JvmName(name = "maxOrThrow")
 public fun kotlin.sequences.Sequence<kotlin.Float>.max(): kotlin.Float
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxByNotEmpty")
+@kotlin.jvm.JvmName(name = "maxByOrThrow")
 public inline fun <T, R : kotlin.Comparable<R>> kotlin.sequences.Sequence<T>.maxBy(selector: (T) -> R): T
 
 @kotlin.SinceKotlin(version = "1.4")
@@ -322,26 +322,26 @@ public fun kotlin.sequences.Sequence<kotlin.Double>.maxOrNull(): kotlin.Double?
 public fun kotlin.sequences.Sequence<kotlin.Float>.maxOrNull(): kotlin.Float?
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxWithNotEmpty")
+@kotlin.jvm.JvmName(name = "maxWithOrThrow")
 public fun <T> kotlin.sequences.Sequence<T>.maxWith(comparator: kotlin.Comparator<in T>): T
 
 @kotlin.SinceKotlin(version = "1.4")
 public fun <T> kotlin.sequences.Sequence<T>.maxWithOrNull(comparator: kotlin.Comparator<in T>): T?
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minNotEmpty")
+@kotlin.jvm.JvmName(name = "minOrThrow")
 public fun <T : kotlin.Comparable<T>> kotlin.sequences.Sequence<T>.min(): T
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minNotEmpty")
+@kotlin.jvm.JvmName(name = "minOrThrow")
 public fun kotlin.sequences.Sequence<kotlin.Double>.min(): kotlin.Double
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minNotEmpty")
+@kotlin.jvm.JvmName(name = "minOrThrow")
 public fun kotlin.sequences.Sequence<kotlin.Float>.min(): kotlin.Float
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minByNotEmpty")
+@kotlin.jvm.JvmName(name = "minByOrThrow")
 public inline fun <T, R : kotlin.Comparable<R>> kotlin.sequences.Sequence<T>.minBy(selector: (T) -> R): T
 
 @kotlin.SinceKotlin(version = "1.4")
@@ -397,7 +397,7 @@ public fun kotlin.sequences.Sequence<kotlin.Double>.minOrNull(): kotlin.Double?
 public fun kotlin.sequences.Sequence<kotlin.Float>.minOrNull(): kotlin.Float?
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minWithNotEmpty")
+@kotlin.jvm.JvmName(name = "minWithOrThrow")
 public fun <T> kotlin.sequences.Sequence<T>.minWith(comparator: kotlin.Comparator<in T>): T
 
 @kotlin.SinceKotlin(version = "1.4")

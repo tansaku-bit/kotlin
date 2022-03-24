@@ -5948,7 +5948,7 @@ public inline fun UShortArray.forEachIndexed(action: (index: Int, UShort) -> Uni
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UIntArray.max(): UInt {
@@ -5967,7 +5967,7 @@ public fun UIntArray.max(): UInt {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ULongArray.max(): ULong {
@@ -5986,7 +5986,7 @@ public fun ULongArray.max(): ULong {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UByteArray.max(): UByte {
@@ -6005,7 +6005,7 @@ public fun UByteArray.max(): UByte {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UShortArray.max(): UShort {
@@ -6026,7 +6026,7 @@ public fun UShortArray.max(): UShort {
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
@@ -6055,7 +6055,7 @@ public inline fun <R : Comparable<R>> UIntArray.maxBy(selector: (UInt) -> R): UI
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
@@ -6084,7 +6084,7 @@ public inline fun <R : Comparable<R>> ULongArray.maxBy(selector: (ULong) -> R): 
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
@@ -6113,7 +6113,7 @@ public inline fun <R : Comparable<R>> UByteArray.maxBy(selector: (UByte) -> R): 
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
@@ -7004,7 +7004,7 @@ public fun UShortArray.maxOrNull(): UShort? {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UIntArray.maxWith(comparator: Comparator<in UInt>): UInt {
@@ -7023,7 +7023,7 @@ public fun UIntArray.maxWith(comparator: Comparator<in UInt>): UInt {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ULongArray.maxWith(comparator: Comparator<in ULong>): ULong {
@@ -7042,7 +7042,7 @@ public fun ULongArray.maxWith(comparator: Comparator<in ULong>): ULong {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UByteArray.maxWith(comparator: Comparator<in UByte>): UByte {
@@ -7061,7 +7061,7 @@ public fun UByteArray.maxWith(comparator: Comparator<in UByte>): UByte {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UShortArray.maxWith(comparator: Comparator<in UShort>): UShort {
@@ -7140,7 +7140,7 @@ public fun UShortArray.maxWithOrNull(comparator: Comparator<in UShort>): UShort?
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UIntArray.min(): UInt {
@@ -7159,7 +7159,7 @@ public fun UIntArray.min(): UInt {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ULongArray.min(): ULong {
@@ -7178,7 +7178,7 @@ public fun ULongArray.min(): ULong {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UByteArray.min(): UByte {
@@ -7197,7 +7197,7 @@ public fun UByteArray.min(): UByte {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UShortArray.min(): UShort {
@@ -7218,7 +7218,7 @@ public fun UShortArray.min(): UShort {
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
@@ -7247,7 +7247,7 @@ public inline fun <R : Comparable<R>> UIntArray.minBy(selector: (UInt) -> R): UI
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
@@ -7276,7 +7276,7 @@ public inline fun <R : Comparable<R>> ULongArray.minBy(selector: (ULong) -> R): 
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
@@ -7305,7 +7305,7 @@ public inline fun <R : Comparable<R>> UByteArray.minBy(selector: (UByte) -> R): 
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
@@ -8196,7 +8196,7 @@ public fun UShortArray.minOrNull(): UShort? {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UIntArray.minWith(comparator: Comparator<in UInt>): UInt {
@@ -8215,7 +8215,7 @@ public fun UIntArray.minWith(comparator: Comparator<in UInt>): UInt {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ULongArray.minWith(comparator: Comparator<in ULong>): ULong {
@@ -8234,7 +8234,7 @@ public fun ULongArray.minWith(comparator: Comparator<in ULong>): ULong {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UByteArray.minWith(comparator: Comparator<in UByte>): UByte {
@@ -8253,7 +8253,7 @@ public fun UByteArray.minWith(comparator: Comparator<in UByte>): UByte {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @ExperimentalUnsignedTypes
 @Suppress("CONFLICTING_OVERLOADS")
 public fun UShortArray.minWith(comparator: Comparator<in UShort>): UShort {

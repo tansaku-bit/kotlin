@@ -13690,7 +13690,7 @@ public inline fun CharArray.forEachIndexed(action: (index: Int, Char) -> Unit): 
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun Array<out Double>.max(): Double {
     if (isEmpty()) throw NoSuchElementException()
@@ -13710,7 +13710,7 @@ public fun Array<out Double>.max(): Double {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun Array<out Float>.max(): Float {
     if (isEmpty()) throw NoSuchElementException()
@@ -13728,7 +13728,7 @@ public fun Array<out Float>.max(): Float {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun <T : Comparable<T>> Array<out T>.max(): T {
     if (isEmpty()) throw NoSuchElementException()
@@ -13746,7 +13746,7 @@ public fun <T : Comparable<T>> Array<out T>.max(): T {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ByteArray.max(): Byte {
     if (isEmpty()) throw NoSuchElementException()
@@ -13764,7 +13764,7 @@ public fun ByteArray.max(): Byte {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ShortArray.max(): Short {
     if (isEmpty()) throw NoSuchElementException()
@@ -13782,7 +13782,7 @@ public fun ShortArray.max(): Short {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun IntArray.max(): Int {
     if (isEmpty()) throw NoSuchElementException()
@@ -13800,7 +13800,7 @@ public fun IntArray.max(): Int {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun LongArray.max(): Long {
     if (isEmpty()) throw NoSuchElementException()
@@ -13820,7 +13820,7 @@ public fun LongArray.max(): Long {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun FloatArray.max(): Float {
     if (isEmpty()) throw NoSuchElementException()
@@ -13840,7 +13840,7 @@ public fun FloatArray.max(): Float {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun DoubleArray.max(): Double {
     if (isEmpty()) throw NoSuchElementException()
@@ -13858,7 +13858,7 @@ public fun DoubleArray.max(): Double {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun CharArray.max(): Char {
     if (isEmpty()) throw NoSuchElementException()
@@ -13878,7 +13878,7 @@ public fun CharArray.max(): Char {
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <T, R : Comparable<R>> Array<out T>.maxBy(selector: (T) -> R): T {
     if (isEmpty()) throw NoSuchElementException()
@@ -13905,7 +13905,7 @@ public inline fun <T, R : Comparable<R>> Array<out T>.maxBy(selector: (T) -> R):
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> ByteArray.maxBy(selector: (Byte) -> R): Byte {
     if (isEmpty()) throw NoSuchElementException()
@@ -13932,7 +13932,7 @@ public inline fun <R : Comparable<R>> ByteArray.maxBy(selector: (Byte) -> R): By
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> ShortArray.maxBy(selector: (Short) -> R): Short {
     if (isEmpty()) throw NoSuchElementException()
@@ -13959,7 +13959,7 @@ public inline fun <R : Comparable<R>> ShortArray.maxBy(selector: (Short) -> R): 
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> IntArray.maxBy(selector: (Int) -> R): Int {
     if (isEmpty()) throw NoSuchElementException()
@@ -13986,7 +13986,7 @@ public inline fun <R : Comparable<R>> IntArray.maxBy(selector: (Int) -> R): Int 
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> LongArray.maxBy(selector: (Long) -> R): Long {
     if (isEmpty()) throw NoSuchElementException()
@@ -14013,7 +14013,7 @@ public inline fun <R : Comparable<R>> LongArray.maxBy(selector: (Long) -> R): Lo
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> FloatArray.maxBy(selector: (Float) -> R): Float {
     if (isEmpty()) throw NoSuchElementException()
@@ -14040,7 +14040,7 @@ public inline fun <R : Comparable<R>> FloatArray.maxBy(selector: (Float) -> R): 
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> DoubleArray.maxBy(selector: (Double) -> R): Double {
     if (isEmpty()) throw NoSuchElementException()
@@ -14067,7 +14067,7 @@ public inline fun <R : Comparable<R>> DoubleArray.maxBy(selector: (Double) -> R)
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> BooleanArray.maxBy(selector: (Boolean) -> R): Boolean {
     if (isEmpty()) throw NoSuchElementException()
@@ -14094,7 +14094,7 @@ public inline fun <R : Comparable<R>> BooleanArray.maxBy(selector: (Boolean) -> 
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> CharArray.maxBy(selector: (Char) -> R): Char {
     if (isEmpty()) throw NoSuchElementException()
@@ -15986,7 +15986,7 @@ public fun CharArray.maxOrNull(): Char? {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun <T> Array<out T>.maxWith(comparator: Comparator<in T>): T {
     if (isEmpty()) throw NoSuchElementException()
@@ -16004,7 +16004,7 @@ public fun <T> Array<out T>.maxWith(comparator: Comparator<in T>): T {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ByteArray.maxWith(comparator: Comparator<in Byte>): Byte {
     if (isEmpty()) throw NoSuchElementException()
@@ -16022,7 +16022,7 @@ public fun ByteArray.maxWith(comparator: Comparator<in Byte>): Byte {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ShortArray.maxWith(comparator: Comparator<in Short>): Short {
     if (isEmpty()) throw NoSuchElementException()
@@ -16040,7 +16040,7 @@ public fun ShortArray.maxWith(comparator: Comparator<in Short>): Short {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun IntArray.maxWith(comparator: Comparator<in Int>): Int {
     if (isEmpty()) throw NoSuchElementException()
@@ -16058,7 +16058,7 @@ public fun IntArray.maxWith(comparator: Comparator<in Int>): Int {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun LongArray.maxWith(comparator: Comparator<in Long>): Long {
     if (isEmpty()) throw NoSuchElementException()
@@ -16076,7 +16076,7 @@ public fun LongArray.maxWith(comparator: Comparator<in Long>): Long {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun FloatArray.maxWith(comparator: Comparator<in Float>): Float {
     if (isEmpty()) throw NoSuchElementException()
@@ -16094,7 +16094,7 @@ public fun FloatArray.maxWith(comparator: Comparator<in Float>): Float {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun DoubleArray.maxWith(comparator: Comparator<in Double>): Double {
     if (isEmpty()) throw NoSuchElementException()
@@ -16112,7 +16112,7 @@ public fun DoubleArray.maxWith(comparator: Comparator<in Double>): Double {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun BooleanArray.maxWith(comparator: Comparator<in Boolean>): Boolean {
     if (isEmpty()) throw NoSuchElementException()
@@ -16130,7 +16130,7 @@ public fun BooleanArray.maxWith(comparator: Comparator<in Boolean>): Boolean {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun CharArray.maxWith(comparator: Comparator<in Char>): Char {
     if (isEmpty()) throw NoSuchElementException()
@@ -16276,7 +16276,7 @@ public fun CharArray.maxWithOrNull(comparator: Comparator<in Char>): Char? {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun Array<out Double>.min(): Double {
     if (isEmpty()) throw NoSuchElementException()
@@ -16296,7 +16296,7 @@ public fun Array<out Double>.min(): Double {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun Array<out Float>.min(): Float {
     if (isEmpty()) throw NoSuchElementException()
@@ -16314,7 +16314,7 @@ public fun Array<out Float>.min(): Float {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun <T : Comparable<T>> Array<out T>.min(): T {
     if (isEmpty()) throw NoSuchElementException()
@@ -16332,7 +16332,7 @@ public fun <T : Comparable<T>> Array<out T>.min(): T {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ByteArray.min(): Byte {
     if (isEmpty()) throw NoSuchElementException()
@@ -16350,7 +16350,7 @@ public fun ByteArray.min(): Byte {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ShortArray.min(): Short {
     if (isEmpty()) throw NoSuchElementException()
@@ -16368,7 +16368,7 @@ public fun ShortArray.min(): Short {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun IntArray.min(): Int {
     if (isEmpty()) throw NoSuchElementException()
@@ -16386,7 +16386,7 @@ public fun IntArray.min(): Int {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun LongArray.min(): Long {
     if (isEmpty()) throw NoSuchElementException()
@@ -16406,7 +16406,7 @@ public fun LongArray.min(): Long {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun FloatArray.min(): Float {
     if (isEmpty()) throw NoSuchElementException()
@@ -16426,7 +16426,7 @@ public fun FloatArray.min(): Float {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun DoubleArray.min(): Double {
     if (isEmpty()) throw NoSuchElementException()
@@ -16444,7 +16444,7 @@ public fun DoubleArray.min(): Double {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun CharArray.min(): Char {
     if (isEmpty()) throw NoSuchElementException()
@@ -16464,7 +16464,7 @@ public fun CharArray.min(): Char {
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <T, R : Comparable<R>> Array<out T>.minBy(selector: (T) -> R): T {
     if (isEmpty()) throw NoSuchElementException()
@@ -16491,7 +16491,7 @@ public inline fun <T, R : Comparable<R>> Array<out T>.minBy(selector: (T) -> R):
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> ByteArray.minBy(selector: (Byte) -> R): Byte {
     if (isEmpty()) throw NoSuchElementException()
@@ -16518,7 +16518,7 @@ public inline fun <R : Comparable<R>> ByteArray.minBy(selector: (Byte) -> R): By
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> ShortArray.minBy(selector: (Short) -> R): Short {
     if (isEmpty()) throw NoSuchElementException()
@@ -16545,7 +16545,7 @@ public inline fun <R : Comparable<R>> ShortArray.minBy(selector: (Short) -> R): 
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> IntArray.minBy(selector: (Int) -> R): Int {
     if (isEmpty()) throw NoSuchElementException()
@@ -16572,7 +16572,7 @@ public inline fun <R : Comparable<R>> IntArray.minBy(selector: (Int) -> R): Int 
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> LongArray.minBy(selector: (Long) -> R): Long {
     if (isEmpty()) throw NoSuchElementException()
@@ -16599,7 +16599,7 @@ public inline fun <R : Comparable<R>> LongArray.minBy(selector: (Long) -> R): Lo
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> FloatArray.minBy(selector: (Float) -> R): Float {
     if (isEmpty()) throw NoSuchElementException()
@@ -16626,7 +16626,7 @@ public inline fun <R : Comparable<R>> FloatArray.minBy(selector: (Float) -> R): 
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> DoubleArray.minBy(selector: (Double) -> R): Double {
     if (isEmpty()) throw NoSuchElementException()
@@ -16653,7 +16653,7 @@ public inline fun <R : Comparable<R>> DoubleArray.minBy(selector: (Double) -> R)
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> BooleanArray.minBy(selector: (Boolean) -> R): Boolean {
     if (isEmpty()) throw NoSuchElementException()
@@ -16680,7 +16680,7 @@ public inline fun <R : Comparable<R>> BooleanArray.minBy(selector: (Boolean) -> 
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> CharArray.minBy(selector: (Char) -> R): Char {
     if (isEmpty()) throw NoSuchElementException()
@@ -18572,7 +18572,7 @@ public fun CharArray.minOrNull(): Char? {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun <T> Array<out T>.minWith(comparator: Comparator<in T>): T {
     if (isEmpty()) throw NoSuchElementException()
@@ -18590,7 +18590,7 @@ public fun <T> Array<out T>.minWith(comparator: Comparator<in T>): T {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ByteArray.minWith(comparator: Comparator<in Byte>): Byte {
     if (isEmpty()) throw NoSuchElementException()
@@ -18608,7 +18608,7 @@ public fun ByteArray.minWith(comparator: Comparator<in Byte>): Byte {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun ShortArray.minWith(comparator: Comparator<in Short>): Short {
     if (isEmpty()) throw NoSuchElementException()
@@ -18626,7 +18626,7 @@ public fun ShortArray.minWith(comparator: Comparator<in Short>): Short {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun IntArray.minWith(comparator: Comparator<in Int>): Int {
     if (isEmpty()) throw NoSuchElementException()
@@ -18644,7 +18644,7 @@ public fun IntArray.minWith(comparator: Comparator<in Int>): Int {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun LongArray.minWith(comparator: Comparator<in Long>): Long {
     if (isEmpty()) throw NoSuchElementException()
@@ -18662,7 +18662,7 @@ public fun LongArray.minWith(comparator: Comparator<in Long>): Long {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun FloatArray.minWith(comparator: Comparator<in Float>): Float {
     if (isEmpty()) throw NoSuchElementException()
@@ -18680,7 +18680,7 @@ public fun FloatArray.minWith(comparator: Comparator<in Float>): Float {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun DoubleArray.minWith(comparator: Comparator<in Double>): Double {
     if (isEmpty()) throw NoSuchElementException()
@@ -18698,7 +18698,7 @@ public fun DoubleArray.minWith(comparator: Comparator<in Double>): Double {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun BooleanArray.minWith(comparator: Comparator<in Boolean>): Boolean {
     if (isEmpty()) throw NoSuchElementException()
@@ -18716,7 +18716,7 @@ public fun BooleanArray.minWith(comparator: Comparator<in Boolean>): Boolean {
  * @throws NoSuchElementException if the array is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun CharArray.minWith(comparator: Comparator<in Char>): Char {
     if (isEmpty()) throw NoSuchElementException()

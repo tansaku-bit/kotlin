@@ -219,7 +219,7 @@ public inline fun <K, V> Map<out K, V>.forEach(action: (Map.Entry<K, V>) -> Unit
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <K, V, R : Comparable<R>> Map<out K, V>.maxBy(selector: (Map.Entry<K, V>) -> R): Map.Entry<K, V> {
@@ -355,7 +355,7 @@ public inline fun <K, V, R> Map<out K, V>.maxOfWithOrNull(comparator: Comparator
  * @throws NoSuchElementException if the map is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <K, V> Map<out K, V>.maxWith(comparator: Comparator<in Map.Entry<K, V>>): Map.Entry<K, V> {
@@ -379,7 +379,7 @@ public inline fun <K, V> Map<out K, V>.maxWithOrNull(comparator: Comparator<in M
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <K, V, R : Comparable<R>> Map<out K, V>.minBy(selector: (Map.Entry<K, V>) -> R): Map.Entry<K, V> {
@@ -515,7 +515,7 @@ public inline fun <K, V, R> Map<out K, V>.minOfWithOrNull(comparator: Comparator
  * @throws NoSuchElementException if the map is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @kotlin.internal.InlineOnly
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <K, V> Map<out K, V>.minWith(comparator: Comparator<in Map.Entry<K, V>>): Map.Entry<K, V> {

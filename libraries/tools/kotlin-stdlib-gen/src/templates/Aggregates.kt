@@ -354,7 +354,7 @@ object Aggregates : TemplateGroupBase() {
                 }
                 if (!nullable) {
                     throws("NoSuchElementException", "if the ${f.collection} is empty.")
-                    annotation("@kotlin.jvm.JvmName(\"${op}NotEmpty\")")
+                    annotation("@kotlin.jvm.JvmName(\"${op}OrThrow\")")
                 }
 
                 val acc = op
@@ -424,7 +424,7 @@ object Aggregates : TemplateGroupBase() {
 
                 if (!nullable) {
                     throws("NoSuchElementException", "if the ${f.collection} is empty.")
-                    annotation("@kotlin.jvm.JvmName(\"${op}NotEmpty\")")
+                    annotation("@kotlin.jvm.JvmName(\"${op}OrThrow\")")
                 }
 
                 val (elem, value, cmp) = if (op == "minBy") Triple("minElem", "minValue", ">") else Triple("maxElem", "maxValue", "<")
@@ -501,7 +501,7 @@ object Aggregates : TemplateGroupBase() {
                 doc { "Returns the first ${f.element} having the ${if (op == "maxWith") "largest" else "smallest"} value according to the provided [comparator]${" or `null` if there are no ${f.element.pluralize()}".ifOrEmpty(nullable)}." }
                 if (!nullable) {
                     throws("NoSuchElementException", "if the ${f.collection} is empty.")
-                    annotation("@kotlin.jvm.JvmName(\"${op}NotEmpty\")")
+                    annotation("@kotlin.jvm.JvmName(\"${op}OrThrow\")")
                 }
 
                 val (acc, cmp) = if (op == "minWith") Pair("min", ">") else Pair("max", "<")

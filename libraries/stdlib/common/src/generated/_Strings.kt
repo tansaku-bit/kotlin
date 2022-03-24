@@ -1185,7 +1185,7 @@ public inline fun CharSequence.forEachIndexed(action: (index: Int, Char) -> Unit
  * @throws NoSuchElementException if the char sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun CharSequence.max(): Char {
     if (isEmpty()) throw NoSuchElementException()
@@ -1205,7 +1205,7 @@ public fun CharSequence.max(): Char {
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> CharSequence.maxBy(selector: (Char) -> R): Char {
     if (isEmpty()) throw NoSuchElementException()
@@ -1435,7 +1435,7 @@ public fun CharSequence.maxOrNull(): Char? {
  * @throws NoSuchElementException if the char sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun CharSequence.maxWith(comparator: Comparator<in Char>): Char {
     if (isEmpty()) throw NoSuchElementException()
@@ -1467,7 +1467,7 @@ public fun CharSequence.maxWithOrNull(comparator: Comparator<in Char>): Char? {
  * @throws NoSuchElementException if the char sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun CharSequence.min(): Char {
     if (isEmpty()) throw NoSuchElementException()
@@ -1487,7 +1487,7 @@ public fun CharSequence.min(): Char {
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <R : Comparable<R>> CharSequence.minBy(selector: (Char) -> R): Char {
     if (isEmpty()) throw NoSuchElementException()
@@ -1717,7 +1717,7 @@ public fun CharSequence.minOrNull(): Char? {
  * @throws NoSuchElementException if the char sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun CharSequence.minWith(comparator: Comparator<in Char>): Char {
     if (isEmpty()) throw NoSuchElementException()

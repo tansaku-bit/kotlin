@@ -1312,7 +1312,7 @@ public inline fun <T> Sequence<T>.forEachIndexed(action: (index: Int, T) -> Unit
  * @throws NoSuchElementException if the sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun Sequence<Double>.max(): Double {
     val iterator = iterator()
@@ -1335,7 +1335,7 @@ public fun Sequence<Double>.max(): Double {
  * @throws NoSuchElementException if the sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun Sequence<Float>.max(): Float {
     val iterator = iterator()
@@ -1356,7 +1356,7 @@ public fun Sequence<Float>.max(): Float {
  * @throws NoSuchElementException if the sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxNotEmpty")
+@kotlin.jvm.JvmName("maxOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun <T : Comparable<T>> Sequence<T>.max(): T {
     val iterator = iterator()
@@ -1379,7 +1379,7 @@ public fun <T : Comparable<T>> Sequence<T>.max(): T {
  * @sample samples.collections.Collections.Aggregates.maxBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxByNotEmpty")
+@kotlin.jvm.JvmName("maxByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <T, R : Comparable<R>> Sequence<T>.maxBy(selector: (T) -> R): T {
     val iterator = iterator()
@@ -1678,7 +1678,7 @@ public fun <T : Comparable<T>> Sequence<T>.maxOrNull(): T? {
  * @throws NoSuchElementException if the sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("maxWithNotEmpty")
+@kotlin.jvm.JvmName("maxWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun <T> Sequence<T>.maxWith(comparator: Comparator<in T>): T {
     val iterator = iterator()
@@ -1718,7 +1718,7 @@ public fun <T> Sequence<T>.maxWithOrNull(comparator: Comparator<in T>): T? {
  * @throws NoSuchElementException if the sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun Sequence<Double>.min(): Double {
     val iterator = iterator()
@@ -1741,7 +1741,7 @@ public fun Sequence<Double>.min(): Double {
  * @throws NoSuchElementException if the sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun Sequence<Float>.min(): Float {
     val iterator = iterator()
@@ -1762,7 +1762,7 @@ public fun Sequence<Float>.min(): Float {
  * @throws NoSuchElementException if the sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minNotEmpty")
+@kotlin.jvm.JvmName("minOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun <T : Comparable<T>> Sequence<T>.min(): T {
     val iterator = iterator()
@@ -1785,7 +1785,7 @@ public fun <T : Comparable<T>> Sequence<T>.min(): T {
  * @sample samples.collections.Collections.Aggregates.minBy
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minByNotEmpty")
+@kotlin.jvm.JvmName("minByOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public inline fun <T, R : Comparable<R>> Sequence<T>.minBy(selector: (T) -> R): T {
     val iterator = iterator()
@@ -2084,7 +2084,7 @@ public fun <T : Comparable<T>> Sequence<T>.minOrNull(): T? {
  * @throws NoSuchElementException if the sequence is empty.
  */
 @SinceKotlin("1.7")
-@kotlin.jvm.JvmName("minWithNotEmpty")
+@kotlin.jvm.JvmName("minWithOrThrow")
 @Suppress("CONFLICTING_OVERLOADS")
 public fun <T> Sequence<T>.minWith(comparator: Comparator<in T>): T {
     val iterator = iterator()
