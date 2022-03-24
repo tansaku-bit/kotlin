@@ -329,6 +329,7 @@ fun Jar.setupPublicJar(
     val buildNumber = project.rootProject.extra["buildNumber"] as String
     this.archiveBaseName.set(baseName)
     this.archiveClassifier.set(classifier)
+    this.isPreserveFileTimestamps = false
     manifest.attributes.apply {
         put("Implementation-Vendor", "JetBrains")
         put("Implementation-Title", baseName.get())
