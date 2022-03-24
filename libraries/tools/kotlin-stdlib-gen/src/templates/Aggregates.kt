@@ -329,6 +329,7 @@ object Aggregates : TemplateGroupBase() {
                 returns("T" + "?".ifOrEmpty(nullable))
 
                 val isFloat = primitive?.isFloatingPoint() == true
+                val isUnsigned = family == ArraysOfUnsigned
 
                 if (!nullable || legacy) suppress("CONFLICTING_OVERLOADS")
                 if (legacy) {
@@ -354,7 +355,7 @@ object Aggregates : TemplateGroupBase() {
                 }
                 if (!nullable) {
                     throws("NoSuchElementException", "if the ${f.collection} is empty.")
-                    annotation("@kotlin.jvm.JvmName(\"${op}OrThrow\")")
+                    annotation("@kotlin.jvm.JvmName(\"${op}OrThrow${"-U".ifOrEmpty(isUnsigned)}\")")
                 }
 
                 val acc = op
@@ -406,6 +407,7 @@ object Aggregates : TemplateGroupBase() {
                 specialFor(Maps) { if (op == "maxBy" || !legacy) inlineOnly() }
                 typeParam("R : Comparable<R>")
                 returns("T" + "?".ifOrEmpty(nullable))
+                val isUnsigned = family == ArraysOfUnsigned
 
                 if (!nullable || legacy) suppress("CONFLICTING_OVERLOADS")
                 if (legacy) {
@@ -424,7 +426,7 @@ object Aggregates : TemplateGroupBase() {
 
                 if (!nullable) {
                     throws("NoSuchElementException", "if the ${f.collection} is empty.")
-                    annotation("@kotlin.jvm.JvmName(\"${op}OrThrow\")")
+                    annotation("@kotlin.jvm.JvmName(\"${op}OrThrow${"-U".ifOrEmpty(isUnsigned)}\")")
                 }
 
                 val (elem, value, cmp) = if (op == "minBy") Triple("minElem", "minValue", ">") else Triple("maxElem", "maxValue", "<")
@@ -485,6 +487,7 @@ object Aggregates : TemplateGroupBase() {
             } builder {
                 specialFor(Maps) { if (op == "maxWith" || !legacy) inlineOnly() }
                 returns("T" + "?".ifOrEmpty(nullable))
+                val isUnsigned = family == ArraysOfUnsigned
 
                 if (!nullable || legacy) suppress("CONFLICTING_OVERLOADS")
                 if (legacy) {
@@ -501,7 +504,7 @@ object Aggregates : TemplateGroupBase() {
                 doc { "Returns the first ${f.element} having the ${if (op == "maxWith") "largest" else "smallest"} value according to the provided [comparator]${" or `null` if there are no ${f.element.pluralize()}".ifOrEmpty(nullable)}." }
                 if (!nullable) {
                     throws("NoSuchElementException", "if the ${f.collection} is empty.")
-                    annotation("@kotlin.jvm.JvmName(\"${op}OrThrow\")")
+                    annotation("@kotlin.jvm.JvmName(\"${op}OrThrow${"-U".ifOrEmpty(isUnsigned)}\")")
                 }
 
                 val (acc, cmp) = if (op == "minWith") Pair("min", ">") else Pair("max", "<")

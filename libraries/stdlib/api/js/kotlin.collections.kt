@@ -4194,22 +4194,22 @@ public fun kotlin.LongArray.max(): kotlin.Long
 public fun kotlin.ShortArray.max(): kotlin.Short
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxOrThrow")
+@kotlin.jvm.JvmName(name = "maxOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UByteArray.max(): kotlin.UByte
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxOrThrow")
+@kotlin.jvm.JvmName(name = "maxOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UIntArray.max(): kotlin.UInt
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxOrThrow")
+@kotlin.jvm.JvmName(name = "maxOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.ULongArray.max(): kotlin.ULong
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxOrThrow")
+@kotlin.jvm.JvmName(name = "maxOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UShortArray.max(): kotlin.UShort
 
@@ -4262,25 +4262,25 @@ public inline fun <R : kotlin.Comparable<R>> kotlin.LongArray.maxBy(selector: (k
 public inline fun <R : kotlin.Comparable<R>> kotlin.ShortArray.maxBy(selector: (kotlin.Short) -> R): kotlin.Short
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxByOrThrow")
+@kotlin.jvm.JvmName(name = "maxByOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 public inline fun <R : kotlin.Comparable<R>> kotlin.UByteArray.maxBy(selector: (kotlin.UByte) -> R): kotlin.UByte
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxByOrThrow")
+@kotlin.jvm.JvmName(name = "maxByOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 public inline fun <R : kotlin.Comparable<R>> kotlin.UIntArray.maxBy(selector: (kotlin.UInt) -> R): kotlin.UInt
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxByOrThrow")
+@kotlin.jvm.JvmName(name = "maxByOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 public inline fun <R : kotlin.Comparable<R>> kotlin.ULongArray.maxBy(selector: (kotlin.ULong) -> R): kotlin.ULong
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxByOrThrow")
+@kotlin.jvm.JvmName(name = "maxByOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 public inline fun <R : kotlin.Comparable<R>> kotlin.UShortArray.maxBy(selector: (kotlin.UShort) -> R): kotlin.UShort
@@ -5072,22 +5072,22 @@ public fun kotlin.LongArray.maxWith(comparator: kotlin.Comparator<in kotlin.Long
 public fun kotlin.ShortArray.maxWith(comparator: kotlin.Comparator<in kotlin.Short>): kotlin.Short
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxWithOrThrow")
+@kotlin.jvm.JvmName(name = "maxWithOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UByteArray.maxWith(comparator: kotlin.Comparator<in kotlin.UByte>): kotlin.UByte
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxWithOrThrow")
+@kotlin.jvm.JvmName(name = "maxWithOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UIntArray.maxWith(comparator: kotlin.Comparator<in kotlin.UInt>): kotlin.UInt
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxWithOrThrow")
+@kotlin.jvm.JvmName(name = "maxWithOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.ULongArray.maxWith(comparator: kotlin.Comparator<in kotlin.ULong>): kotlin.ULong
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "maxWithOrThrow")
+@kotlin.jvm.JvmName(name = "maxWithOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UShortArray.maxWith(comparator: kotlin.Comparator<in kotlin.UShort>): kotlin.UShort
 
@@ -5191,22 +5191,22 @@ public fun kotlin.LongArray.min(): kotlin.Long
 public fun kotlin.ShortArray.min(): kotlin.Short
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minOrThrow")
+@kotlin.jvm.JvmName(name = "minOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UByteArray.min(): kotlin.UByte
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minOrThrow")
+@kotlin.jvm.JvmName(name = "minOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UIntArray.min(): kotlin.UInt
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minOrThrow")
+@kotlin.jvm.JvmName(name = "minOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.ULongArray.min(): kotlin.ULong
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minOrThrow")
+@kotlin.jvm.JvmName(name = "minOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UShortArray.min(): kotlin.UShort
 
@@ -5259,25 +5259,25 @@ public inline fun <R : kotlin.Comparable<R>> kotlin.LongArray.minBy(selector: (k
 public inline fun <R : kotlin.Comparable<R>> kotlin.ShortArray.minBy(selector: (kotlin.Short) -> R): kotlin.Short
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minByOrThrow")
+@kotlin.jvm.JvmName(name = "minByOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 public inline fun <R : kotlin.Comparable<R>> kotlin.UByteArray.minBy(selector: (kotlin.UByte) -> R): kotlin.UByte
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minByOrThrow")
+@kotlin.jvm.JvmName(name = "minByOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 public inline fun <R : kotlin.Comparable<R>> kotlin.UIntArray.minBy(selector: (kotlin.UInt) -> R): kotlin.UInt
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minByOrThrow")
+@kotlin.jvm.JvmName(name = "minByOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 public inline fun <R : kotlin.Comparable<R>> kotlin.ULongArray.minBy(selector: (kotlin.ULong) -> R): kotlin.ULong
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minByOrThrow")
+@kotlin.jvm.JvmName(name = "minByOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 @kotlin.internal.InlineOnly
 public inline fun <R : kotlin.Comparable<R>> kotlin.UShortArray.minBy(selector: (kotlin.UShort) -> R): kotlin.UShort
@@ -6069,22 +6069,22 @@ public fun kotlin.LongArray.minWith(comparator: kotlin.Comparator<in kotlin.Long
 public fun kotlin.ShortArray.minWith(comparator: kotlin.Comparator<in kotlin.Short>): kotlin.Short
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minWithOrThrow")
+@kotlin.jvm.JvmName(name = "minWithOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UByteArray.minWith(comparator: kotlin.Comparator<in kotlin.UByte>): kotlin.UByte
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minWithOrThrow")
+@kotlin.jvm.JvmName(name = "minWithOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UIntArray.minWith(comparator: kotlin.Comparator<in kotlin.UInt>): kotlin.UInt
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minWithOrThrow")
+@kotlin.jvm.JvmName(name = "minWithOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.ULongArray.minWith(comparator: kotlin.Comparator<in kotlin.ULong>): kotlin.ULong
 
 @kotlin.SinceKotlin(version = "1.7")
-@kotlin.jvm.JvmName(name = "minWithOrThrow")
+@kotlin.jvm.JvmName(name = "minWithOrThrow-U")
 @kotlin.ExperimentalUnsignedTypes
 public fun kotlin.UShortArray.minWith(comparator: kotlin.Comparator<in kotlin.UShort>): kotlin.UShort
 

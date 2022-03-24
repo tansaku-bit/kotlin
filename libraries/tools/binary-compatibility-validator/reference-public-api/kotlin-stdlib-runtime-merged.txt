@@ -2751,10 +2751,10 @@ public final class kotlin/collections/unsigned/UArraysKt {
 	public static final fun maxOrNull-GBYM_sE ([B)Lkotlin/UByte;
 	public static final fun maxOrNull-QwZRm1k ([J)Lkotlin/ULong;
 	public static final fun maxOrNull-rL5Bavg ([S)Lkotlin/UShort;
-	public static final fun maxOrThrow ([B)B
-	public static final fun maxOrThrow ([I)I
-	public static final fun maxOrThrow ([J)J
-	public static final fun maxOrThrow ([S)S
+	public static final fun maxOrThrow-U ([B)B
+	public static final fun maxOrThrow-U ([I)I
+	public static final fun maxOrThrow-U ([J)J
+	public static final fun maxOrThrow-U ([S)S
 	public static final synthetic fun maxWith-XMRcp5o ([BLjava/util/Comparator;)Lkotlin/UByte;
 	public static final synthetic fun maxWith-YmdZ_VM ([ILjava/util/Comparator;)Lkotlin/UInt;
 	public static final synthetic fun maxWith-eOHTfZs ([SLjava/util/Comparator;)Lkotlin/UShort;
@@ -2763,10 +2763,10 @@ public final class kotlin/collections/unsigned/UArraysKt {
 	public static final fun maxWithOrNull-YmdZ_VM ([ILjava/util/Comparator;)Lkotlin/UInt;
 	public static final fun maxWithOrNull-eOHTfZs ([SLjava/util/Comparator;)Lkotlin/UShort;
 	public static final fun maxWithOrNull-zrEWJaI ([JLjava/util/Comparator;)Lkotlin/ULong;
-	public static final fun maxWithOrThrow ([BLjava/util/Comparator;)B
-	public static final fun maxWithOrThrow ([ILjava/util/Comparator;)I
-	public static final fun maxWithOrThrow ([JLjava/util/Comparator;)J
-	public static final fun maxWithOrThrow ([SLjava/util/Comparator;)S
+	public static final fun maxWithOrThrow-U ([BLjava/util/Comparator;)B
+	public static final fun maxWithOrThrow-U ([ILjava/util/Comparator;)I
+	public static final fun maxWithOrThrow-U ([JLjava/util/Comparator;)J
+	public static final fun maxWithOrThrow-U ([SLjava/util/Comparator;)S
 	public static final synthetic fun min--ajY-9A ([I)Lkotlin/UInt;
 	public static final synthetic fun min-GBYM_sE ([B)Lkotlin/UByte;
 	public static final synthetic fun min-QwZRm1k ([J)Lkotlin/ULong;
@@ -2775,10 +2775,10 @@ public final class kotlin/collections/unsigned/UArraysKt {
 	public static final fun minOrNull-GBYM_sE ([B)Lkotlin/UByte;
 	public static final fun minOrNull-QwZRm1k ([J)Lkotlin/ULong;
 	public static final fun minOrNull-rL5Bavg ([S)Lkotlin/UShort;
-	public static final fun minOrThrow ([B)B
-	public static final fun minOrThrow ([I)I
-	public static final fun minOrThrow ([J)J
-	public static final fun minOrThrow ([S)S
+	public static final fun minOrThrow-U ([B)B
+	public static final fun minOrThrow-U ([I)I
+	public static final fun minOrThrow-U ([J)J
+	public static final fun minOrThrow-U ([S)S
 	public static final synthetic fun minWith-XMRcp5o ([BLjava/util/Comparator;)Lkotlin/UByte;
 	public static final synthetic fun minWith-YmdZ_VM ([ILjava/util/Comparator;)Lkotlin/UInt;
 	public static final synthetic fun minWith-eOHTfZs ([SLjava/util/Comparator;)Lkotlin/UShort;
@@ -2787,10 +2787,10 @@ public final class kotlin/collections/unsigned/UArraysKt {
 	public static final fun minWithOrNull-YmdZ_VM ([ILjava/util/Comparator;)Lkotlin/UInt;
 	public static final fun minWithOrNull-eOHTfZs ([SLjava/util/Comparator;)Lkotlin/UShort;
 	public static final fun minWithOrNull-zrEWJaI ([JLjava/util/Comparator;)Lkotlin/ULong;
-	public static final fun minWithOrThrow ([BLjava/util/Comparator;)B
-	public static final fun minWithOrThrow ([ILjava/util/Comparator;)I
-	public static final fun minWithOrThrow ([JLjava/util/Comparator;)J
-	public static final fun minWithOrThrow ([SLjava/util/Comparator;)S
+	public static final fun minWithOrThrow-U ([BLjava/util/Comparator;)B
+	public static final fun minWithOrThrow-U ([ILjava/util/Comparator;)I
+	public static final fun minWithOrThrow-U ([JLjava/util/Comparator;)J
+	public static final fun minWithOrThrow-U ([SLjava/util/Comparator;)S
 	public static final fun plus-CFIt9YE ([ILjava/util/Collection;)[I
 	public static final fun plus-kzHmqpY ([JLjava/util/Collection;)[J
 	public static final fun plus-ojwP5H8 ([SLjava/util/Collection;)[S
