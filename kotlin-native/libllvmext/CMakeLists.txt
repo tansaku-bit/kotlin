@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 function(find_llvm_dir)
     message(STATUS "Loading LLVM dependency location from Gradle...")
+    # TODO: Check on Windows.
     execute_process(
             COMMAND ../../gradlew printLlvmDir -q
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
