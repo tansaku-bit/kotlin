@@ -78,6 +78,7 @@ fun compileWasm(
     allowIncompleteImplementations: Boolean = false,
 ): WasmCompilerResult {
     val compiledWasmModule = WasmCompiledModuleFragment(backendContext.irBuiltIns)
+    if (allowIncompleteImplementations) error("")
     val codeGenerator = WasmModuleFragmentGenerator(backendContext, compiledWasmModule, allowIncompleteImplementations = allowIncompleteImplementations)
     allModules.forEach { codeGenerator.generateModule(it) }
 
